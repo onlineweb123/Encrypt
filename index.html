@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #333;
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      margin: 10px 0;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      font-size: 16px;
+      resize: none;
+      outline: none;
+      transition: 0.3s;
+    }
+    textarea:focus {
+      border-color: #66a6ff;
+      box-shadow: 0 0 8px rgba(102,166,255,0.4);
+    }
+    button {
+      background: #66a6ff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      margin: 8px;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #557fe6;
+    }
+    .copy-btn {
+      background: #28c76f;
+    }
+    .copy-btn:hover {
+      background: #20a65a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔐 Secret</h1>
+
+    <textarea id="inputText" placeholder="Type text or encrypted symbols here..."></textarea>
+    <div>
+      <button onclick="encrypt()">Encrypt</button>
+      <button onclick="decrypt()">Decrypt</button>
+      <button class="copy-btn" onclick="copyResult()">Copy Result</button>
+    </div>
+    <textarea id="outputText" placeholder="Result will appear here..."></textarea>
+  </div>
+
+  <script>
+    const map = {
+      'a':'#','b':'@','c':'₹','d':'_','e':'%','f':'&','g':'(','h':')',
+      'i':'*','j':'¶','k':'!','l':'?','m':'"','n':"'",'o':'~','p':'`',
+      'q':'|','r':'•','s':']','t':'™','u':'°','v':'\\','w':'π','x':'€',
+      'y':'^','z':'$'
+    };
+    const reverseMap = Object.fromEntries(Object.entries(map).map(([k,v])=>[v,k]));
+
+    function encrypt(){
+      let text = document.getElementById("inputText").value.toLowerCase();
+      let result = "";
+      for(let ch of text){
+        result += map[ch] || ch;
+      }
+      document.getElementById("outputText").value = result;
+    }
+
+    function decrypt(){
+      let text = document.getElementById("inputText").value;
+      let result = "";
+      for(let ch of text){
+        result += reverseMap[ch] || ch;
+      }
+      document.getElementById("outputText").value = result.toUpperCase();
+    }
+
+    function copyResult(){
+      let output = document.getElementById("outputText");
+      output.select();
+      output.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(output.value);
+      alert("Copied to Clipboard ✅");
+    }
+  </script>
+</body>
+</html>
