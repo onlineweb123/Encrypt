@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ta">
 <head>
 <meta charset="UTF-8">
@@ -23,60 +24,31 @@ body {
   max-width: 500px;
   text-align: center;
 }
-h1 { 
-  margin-bottom: 20px; 
-  font-size: 28px; 
-  color: #333; 
+h1 { margin-bottom: 20px; font-size: 28px; color: #333; }
+label, select, input, textarea, button { margin: 8px 0; }
+textarea, input {
+  width: 100%; padding: 12px; border: 2px solid #ddd;
+  border-radius: 12px; font-size: 16px; outline: none;
+  transition: 0.3s; box-sizing: border-box;
 }
-label, select, input, textarea, button { 
-  margin: 8px 0; 
-}
-textarea, input { 
-  width: 100%; 
-  padding: 12px; 
-  border: 2px solid #ddd; 
-  border-radius: 12px; 
-  font-size: 16px; 
-  outline: none; 
-  transition: 0.3s; 
-  box-sizing: border-box;
-}
-textarea:focus, input:focus { 
-  border-color: #66a6ff; 
-  box-shadow: 0 0 8px rgba(102,166,255,0.4); 
+textarea:focus, input:focus {
+  border-color: #66a6ff; box-shadow: 0 0 8px rgba(102,166,255,0.4);
 }
 button {
-  background: #66a6ff; 
-  color: white; 
-  border: none; 
-  padding: 12px 20px; 
-  border-radius: 12px;
-  cursor: pointer; 
-  font-size: 16px; 
-  transition: 0.3s; 
-  margin: 5px 2px;
+  background: #66a6ff; color: white; border: none;
+  padding: 12px 20px; border-radius: 12px; cursor: pointer;
+  font-size: 16px; transition: 0.3s; margin: 5px 2px;
 }
-button:hover { 
-  background: #557fe6; 
-}
-.copy-btn { 
-  background: #28c76f; 
-}
-.copy-btn:hover { 
-  background: #20a65a; 
-}
-.button-group {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
+button:hover { background: #557fe6; }
+.copy-btn { background: #28c76f; }
+.copy-btn:hover { background: #20a65a; }
+.button-group { display: flex; justify-content: center; flex-wrap: wrap; }
 </style>
 </head>
 <body>
 <div class="container">
   <h1>🔐 Secret Encryption</h1>
-  <h3>Letter Only Encrypt No Numbers</h3>
-  
+  <h3>Password Expiry System</h3>  
   <label for="mapSelect">Select Encryption Map:</label>
   <select id="mapSelect">
     <option value="map1">Map 1</option>
@@ -102,10 +74,70 @@ button:hover {
   </div>
 
   <textarea id="outputText" placeholder="Result will appear here..." rows="4" readonly></textarea>
+  
+  
+    <!-- 🔸 Add ஆரம்பம் -->
+<div id="adBox1" class="ads-box">
+    
+    <!-- இதில் Add  link  -->
+  <a href="" target="_blank">
+      <!-- இதில் Img link  -->
+    <img src="" alt="Ad Banner">
+  </a>
 </div>
+ 
+
+<style>
+  /* Ads Box Styling */
+  .ads-box {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    border: 2px solid #66a6ff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .ads-box img {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  /* Hover Effect */
+  .ads-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  }
+
+  .ads-box:hover img {
+    transform: scale(1.05);
+  }
+</style>
 
 <script>
-// Encryption Maps
+  // Optional: Ad click tracking
+  const adBox1 = document.getElementById('adBox1');
+  adBox1.addEventListener('click', () => {
+    console.log('🔹 Ad Clicked: AdBox1');
+    // இங்கே Google Analytics அல்லது மற்ற tracking code சேர்க்கலாம்
+  });
+</script>
+  
+  <!--       🔸 Add முடிவு           -->
+  
+  
+  
+  
+</div>
+
+
+
+<script>
+// 🔹 Encryption Maps (shortened for demo, you can use full set)
 const maps = {
   map1:{a:'∆',b:'©',c:'√',d:'µ',e:'¶',f:'@',g:'¥',h:'∑',i:'∫',j:'•',k:'$',l:'∞',m:'≈',n:'&',o:'?',p:'£',q:'°',r:'!',s:'^',t:'`',u:'π',v:'ƒ',w:'>',x:'∂',y:'~',z:')',0:'Ω',1:'1',2:'2',3:'3',4:'4',5:'5',6:'6',7:'7',8:'8',9:'9',' ':'>'},
   map2:{a:'©',b:'∆',c:'¶',d:'$',e:'•',f:'∞',g:'¥',h:'≈',i:'∑',j:'√',k:'&',l:'π',m:'?',n:'°',o:'!',p:'`',q:'£',r:'^',s:'~',t:'µ',u:'∂',v:'ƒ',w:'>',x:'@',y:')',z:'1',0:'Ω',1:'2',2:'3',3:'4',4:'5',5:'6',6:'7',7:'8',8:'9',9:'0',' ':'>'},
@@ -119,27 +151,45 @@ const maps = {
   map10:{a:'©',b:'µ',c:'∆',d:'√',e:'•',f:'?',g:'!',h:'¶',i:'°',j:'¥',k:'≈',l:'&',m:'@',n:'`',o:'^',p:'π',q:'£',r:'>',s:'∑',t:'∞',u:'∂',v:')',w:'1',x:'2',y:'3',z:'4',0:'Ω',1:'5',2:'6',3:'7',4:'8',5:'9',6:'0',7:'$',8:'~',9:'¶',' ':'>'}
 };
 
-// Passwords
+// 🔹 Passwords + Expiry DateTime (yyyy-mm-dd hh:mm:ss)
 const mapPasswords = {
-  map1:'abc123', map2:'xyz789', map3:'pass456', map4:'key321', map5:'lock987',
-  map6:'safe654', map7:'code852', map8:'data963', map9:'secret741', map10:'map159'
+  map1:{pwd:'abc123', expiry:'2025-12-06 12:24:00'},
+  map2:{pwd:'xyz789', expiry:'2025-10-07 09:30:00'},
+  map3:{pwd:'pass456', expiry:'2025-10-07 23:59:59'},
+  map4:{pwd:'key321', expiry:'2025-10-08 15:00:00'},
+  map5:{pwd:'lock987', expiry:'2025-10-08 18:00:00'},
+  map6:{pwd:'safe654', expiry:'2025-10-09 10:10:00'},
+  map7:{pwd:'code852', expiry:'2025-10-09 20:00:00'},
+  map8:{pwd:'data963', expiry:'2025-10-10 05:30:00'},
+  map9:{pwd:'secret741', expiry:'2025-10-10 22:00:00'},
+  map10:{pwd:'map159', expiry:'2025-10-11 00:00:00'}
 };
 
-// Functions
+// 🔹 Helper: Get selected map
 function getSelectedMap() {
   return document.getElementById("mapSelect").value;
 }
 
+// 🔹 Password + Expiry Verify
 function verifyPassword() {
   const selected = getSelectedMap();
   const entered = document.getElementById("mapPassword").value;
-  if(entered !== mapPasswords[selected]) {
-    alert("❌ Password wrong! Cannot use this map.");
+  const data = mapPasswords[selected];
+
+  if(entered !== data.pwd) {
+    alert("❌ Wrong Password!");
+    return false;
+  }
+  const now = new Date();
+  const expiry = new Date(data.expiry.replace(" ","T"));
+  if(now > expiry) {
+    alert("⏰ Password Expired!");
     return false;
   }
   return true;
 }
 
+// 🔹 Encrypt
 function encrypt() {
   if(!verifyPassword()) return;
   const map = maps[getSelectedMap()];
@@ -149,6 +199,7 @@ function encrypt() {
   document.getElementById("outputText").value = result;
 }
 
+// 🔹 Decrypt
 function decrypt() {
   if(!verifyPassword()) return;
   const map = maps[getSelectedMap()];
@@ -159,10 +210,10 @@ function decrypt() {
   document.getElementById("outputText").value = result;
 }
 
+// 🔹 Copy Result
 function copyResult() {
   const output = document.getElementById("outputText");
   output.select();
-  output.setSelectionRange(0, 99999); // mobile compatibility
   navigator.clipboard.writeText(output.value)
     .then(()=> alert("✅ Copied to Clipboard"))
     .catch(()=> alert("❌ Failed to copy"));
